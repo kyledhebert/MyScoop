@@ -2,10 +2,13 @@ from scrapy.item import Item, Field
 
 
 class ScoopscraperItem(Item):
-    # Primary Fields
+    # Scraped Fields
     flavor_name = Field()
     flavor_description = Field()
+    location = Field()
+
+    # Calculated Field
     date_seen = Field()
 
-    # Debug Fields
+    # Debug Field
     url = Field()
