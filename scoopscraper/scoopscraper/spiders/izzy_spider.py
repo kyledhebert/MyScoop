@@ -34,6 +34,11 @@ class IzzySpider(Spider):
                 './/div/p[2]/text()', MapCompose(unicode.strip),
                 # join the <p> contents into a single entry
                 Join())
+            loader.add_xpath(
+                'location',
+                '//*[@id="heading"]/h2/text()',
+                # use regex to extract the lcation name from the <h2>
+                re='(St\. Paul|Minneapolis)')
             loader.add_value('date_seen', datetime.now())
             # url captured for debug purposes
             loader.add_value('url', response.url)
