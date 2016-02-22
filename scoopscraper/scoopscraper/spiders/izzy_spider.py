@@ -37,7 +37,8 @@ class IzzySpider(Spider):
             loader.add_xpath(
                 'location',
                 '//*[@id="heading"]/h2/text()',
-                # use regex to extract the lcation name from the <h2>
+                # use regex to extract the location name from the <h2>
+                # HTML: <h2>Current Flavors at Minneapolis</h2>
                 re='(St\. Paul|Minneapolis)')
             loader.add_value('date_seen', datetime.now())
             # url captured for debug purposes
