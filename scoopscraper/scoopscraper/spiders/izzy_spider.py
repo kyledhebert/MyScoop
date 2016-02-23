@@ -1,5 +1,3 @@
-from datetime import datetime
-
 from scrapy.loader import ItemLoader
 from scrapy.loader.processors import Join, MapCompose
 from scrapy.spiders import Spider
@@ -23,7 +21,7 @@ class IzzySpider(Spider):
         """Parses the current flavors grid.
         @url http://flavorup.izzysicecream.com/flavor-grid/web/stpaul
         @returns items 1
-        @scrapes flavor_name flavor_description date_seen url 
+        @scrapes flavor_name flavor_description date_seen url
         """
         # iterate over the flavors in the response using an ItemLoaded
         for flavor in response.xpath(self.flavor_grid_xpath):
@@ -40,7 +38,6 @@ class IzzySpider(Spider):
                 # use regex to extract the location name from the <h2>
                 # HTML: <h2>Current Flavors at Minneapolis</h2>
                 re='(St\. Paul|Minneapolis)')
-            loader.add_value('date_seen', datetime.now())
             # url captured for debug purposes
             loader.add_value('url', response.url)
             yield loader.load_item()
