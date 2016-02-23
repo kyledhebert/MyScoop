@@ -8,4 +8,6 @@
 
 class ScoopscraperPipeline(object):
     def process_item(self, item, spider):
+        # calling DjangoItem.save() stores the item in the database
+        item.save()
         return item
