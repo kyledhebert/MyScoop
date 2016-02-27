@@ -26,12 +26,19 @@ class IzzySpider(Spider):
         # iterate over the flavors in the response using an ItemLoaded
         for flavor in response.xpath(self.flavor_grid_xpath):
             loader = ItemLoader(item=ScoopscraperItem(), selector=flavor)
+
+            # declare input processors
+            loader.flavor_description_in = MapCompose(unicode.strip)
+            loader.flavor_name_in = MapCompose(unicode.strip)
+            loader.location_in = MapCompose(unicode.strip)
+
+            # default output processor
+            loader.default_output_processor = Join()
+
             loader.add_xpath('flavor_name', './/p[2]/text()')
             loader.add_xpath(
                 'flavor_description',
-                './/div/p[2]/text()', MapCompose(unicode.strip),
-                # join the <p> contents into a single entry
-                Join())
+                './/div/p[2]/text()')
             loader.add_xpath(
                 'location',
                 '//*[@id="heading"]/h2/text()',
