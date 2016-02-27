@@ -27,5 +27,6 @@ urlpatterns = [
         TemplateView.as_view(template_name='scoops/contact.html'), 
         name='contact'),
     url(r'^scoops/', include('scoops.urls')),
+    url(r'^accounts/', include('registration.backends.default.urls')),
     url(r'^admin/', admin.site.urls),
 ]
