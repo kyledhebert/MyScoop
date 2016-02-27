@@ -1,0 +1,8 @@
+{% extends 'scoops/base.html' %}
+{% load render_table from django_tables2 %}
+{% block title %}{{ flavor.flavor_name }} - {{ block.super }}{% endblock %}
+{% block content %}
+    <h1>{{ flavor.flavor_name }}</h1>
+    <p>{{ flavor.flavor_description }}</p>
+    <p>Last seen: {{ flavor.date_seen }}
+{% endblock %}  

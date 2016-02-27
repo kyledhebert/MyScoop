@@ -1,0 +1,45 @@
+#grid {
+    margin-top:-14px;
+    background:#fff url(../img/bg-dotted-line.png) top left repeat;
+    position: relative;
+}
+
+#grid ul {
+    padding:0;
+    margin:0;
+    list-style-type:none;
+}
+
+#grid li {
+    display:block;
+    position:relative;
+    /*cursor:move;*/
+    width:120px;
+    height:153px;
+    float:left;
+    padding:0;
+    margin:0;
+    z-index:29;
+}
+
+#grid .flavor-dot {
+    position: absolute;
+    width:92px;
+    height:91px;
+    background-position:top center;
+    background-repeat:no-repeat;
+    margin:19px 13px 4px 13px;
+    padding:0;
+    border:1px solid #9d9d9d;
+    border-radius:46px;
+    -moz-border-radius:46px;
+    -webkit-border-radius:46px;
+}
+
+#grid .flavor-name {
+    text-align:center;
+    padding:0 2px 2px;
+    line-height:1;
+    margin-top:114px;
+    color: #333333;
+}

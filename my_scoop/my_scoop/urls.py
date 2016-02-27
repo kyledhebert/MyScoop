@@ -13,9 +13,19 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
+from django.views.generic import TemplateView
+
+from scoops import views
 
 urlpatterns = [
+    url(r'^$', views.index, name='home'),
+    url(r'^about/$', TemplateView.as_view(template_name='scoops/about.html'),
+        name='about'),
+    url(r'^contact/$',
+        TemplateView.as_view(template_name='scoops/contact.html'), 
+        name='contact'),
+    url(r'^scoops/', include('scoops.urls')),
     url(r'^admin/', admin.site.urls),
 ]

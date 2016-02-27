@@ -1,0 +1,25 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        {% block title %}My Scoop{% endblock %}
+    </title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    {% block header %}{% endblock %}
+</head>
+<body>
+    <header>
+        <h1>My Scoop</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+            </ul>
+        </nav>
+    </header>   
+    {% block content %}{% endblock %}
+    {% block footer %}{% endblock %}
+</body>
+</html>
