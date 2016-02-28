@@ -7,4 +7,6 @@ urlpatterns = [
     # ex: /scoops/13/
     url(r'^(?P<pk>[0-9]+)/$', views.flavor_detail,
         name='flavor_detail_view'),
+    url(r'^(?P<flavor_id>[0-9]+)/add_to_favorites/$', views.add_to_favorites,
+        name='add_to_favorites'),
 ]
