@@ -1,3 +1,5 @@
+import datetime
+
 from django.shortcuts import render
 from django_tables2 import RequestConfig
 
@@ -6,8 +8,10 @@ from .tables import IzzyFlavorTable
 
 
 def index(request):
-    table = IzzyFlavorTable(IzzyFlavor.objects.all())
-    RequestConfig(request).configure(table)
+    table = IzzyFlavorTable(IzzyFlavor.objects.filter(
+        date_seen__date=datetime.date.today()))
+    # paginate to show 32 flavors per page (1 page per location)
+    RequestConfig(request, paginate={'per_page': 32}).configure(table)
     return render(request, 'scoops/index.html', {'table': table})
 
 
