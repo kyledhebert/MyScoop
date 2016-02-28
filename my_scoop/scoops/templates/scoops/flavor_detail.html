@@ -6,12 +6,16 @@
     <p>{{ flavor.flavor_description }}</p>
     <p>Last seen: {{ flavor.date_seen }}
     {% if user.is_authenticated %}
-        <form action="{% url 'scoops:add_to_favorites' flavor.id %}"
+        {% if is_favorite %}
+        <form action="{% url 'scoops:remove_from_favorites' flavor.id %}"
          method="post">
         {% csrf_token %}
-        {% if user in flavor.favorited_by %}
             <input type="submit" value="Remove from Favorites"></input>
+        </form>
         {% else %}
+        <form action="{% url 'scoops:add_to_favorites' flavor.id %}"
+        method="post">
+        {% csrf_token %}
             <input type="submit" value="Add to Favorites"></input>
         </form>
         {% endif %}

@@ -13,4 +13,4 @@ class IzzyFlavorTable(tables.Table):
     
     class Meta:
         model = IzzyFlavor
-        exclude = ('id', 'date_seen', 'url', 'flavor_description')
+        exclude = ('id', 'date_seen', 'url', 'flavor_description',)

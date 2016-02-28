@@ -9,4 +9,6 @@ urlpatterns = [
         name='flavor_detail_view'),
     url(r'^(?P<flavor_id>[0-9]+)/add_to_favorites/$', views.add_to_favorites,
         name='add_to_favorites'),
+    url(r'^(?P<flavor_id>[0-9]+)/remove_from_favorites/$',
+        views.remove_from_favorites, name='remove_from_favorites'),
 ]

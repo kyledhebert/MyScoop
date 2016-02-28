@@ -1,4 +1,5 @@
 from __future__ import unicode_literals
+
 from django.contrib.auth.models import User
 from django.db import models
 
@@ -15,5 +16,8 @@ class IzzyFlavor(models.Model):
     # Debug Field
     url = models.URLField(max_length=250)
 
-    # User field
-    favorited_by = models.ManyToManyField(User, blank=True,)
+
+class FavoriteFlavor(models.Model):
+    user = models.ForeignKey(User, unique=False)
+    flavor = models.ForeignKey(
+        IzzyFlavor, unique=False, on_delete=models.CASCADE)
