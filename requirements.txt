@@ -4,6 +4,8 @@ click==6.2
 cryptography==1.2.2
 cssselect==0.9.1
 Django==1.9.2
+django-registration-redux==1.4
+django-tables2==1.1.2
 enum34==1.1.2
 hubstorage==0.22.0
 idna==2.0
