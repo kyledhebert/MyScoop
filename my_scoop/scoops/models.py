@@ -21,3 +21,17 @@ class FavoriteFlavor(models.Model):
     user = models.ForeignKey(User, unique=False)
     flavor = models.ForeignKey(
         IzzyFlavor, unique=False, on_delete=models.CASCADE)
+
+
+class FlavorReview(models.Model):
+    flavor = models.ForeignKey(IzzyFlavor)
+    author = models.ForeignKey(User)
+    review_title = models.CharField(max_length=250)
+    RATING_CHOICES = (
+        (1, "1 Star"),
+        (2, "2 Stars"),
+        (3, "3 Stars"),
+        (4, "4 Stars"),
+    )
+    flavor_rating = models.CharField(max_length=1, choices=RATING_CHOICES)
+    review_text = models.TextField()
