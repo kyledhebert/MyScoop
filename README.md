@@ -18,4 +18,8 @@ This is a project I built as part of my software development capstone course at 
  - Django
  - Scrapy
  - Postgres 
-   
+
+## Instructions
+ - From the scoopscraper directory run `$ scrapy crawl izzy_spider` to populate the database
+ - From the my_scoop directory run `$ python manage.py runserver`
+ 
