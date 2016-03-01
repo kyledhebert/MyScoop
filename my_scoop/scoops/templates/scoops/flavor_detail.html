@@ -18,6 +18,7 @@
         {% csrf_token %}
             <input type="submit" value="Add to Favorites"></input>
         </form>
+        <a href="{% url 'scoops:review_flavor' flavor.id %}">Write a Review!</a>
         {% endif %}
     {% else %}
         <p>Log in or Register to track your favorite Flavors.</p>

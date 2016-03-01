@@ -5,7 +5,7 @@ from .models import IzzyFlavor
 
 
 class IzzyFlavorTable(tables.Table):
-    flavor_name = tables.LinkColumn('scoops:flavor_detail_view',
+    flavor_name = tables.LinkColumn('scoops:flavor_detail',
                                     args=[A('pk')],
                                     verbose_name="Flavor",)
     # flavor_description = tables.Column(verbose_name="Description")

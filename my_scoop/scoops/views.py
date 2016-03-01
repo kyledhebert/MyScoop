@@ -3,11 +3,12 @@ import datetime
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django_tables2 import RequestConfig
 
 from .models import IzzyFlavor, FavoriteFlavor
 from .tables import IzzyFlavorTable
+from .forms import FlavorReviewForm
 
 
 def index(request):
@@ -68,4 +69,29 @@ def remove_from_favorites(request, flavor_id):
     for favorite in favorites:
         favorite.delete()
     # redirect back to the current flavors list
-    return HttpResponseRedirect(reverse('home')) 
+    return HttpResponseRedirect(reverse('home'))
+
+
+def review_flavor(request, flavor_id):
+    # get the flavor being reviewed 
+    flavor = IzzyFlavor.objects.get(pk=flavor_id)
+    # if this is a POST request, process the form data
+    if request.method == 'POST':
+        # populate the form with the submitted data
+        form = FlavorReviewForm(request.POST)
+        if form.is_valid():
+            # create a new review, but don't save it yet
+            new_review = form.save(commit=False)
+            # we need to add the flavor and user ids to the review
+            new_review.flavor = flavor
+            new_review.author = request.user
+            # now we can save the review
+            new_review.save()
+            # and send the user back to the flavor detail page
+            return redirect('scoops:flavor_detail', pk=flavor.id)
+    # if not a POST request, create a blank form
+    else:
+        form = FlavorReviewForm()
+
+    return render(request, 'scoops/review_flavor.html', {
+        'form': form, 'flavor': flavor})    
