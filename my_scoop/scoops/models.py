@@ -33,5 +33,5 @@ class FlavorReview(models.Model):
         (3, "3 Stars"),
         (4, "4 Stars"),
     )
-    flavor_rating = models.CharField(max_length=1, choices=RATING_CHOICES)
+    flavor_rating = models.IntegerField(choices=RATING_CHOICES)
     review_text = models.TextField()

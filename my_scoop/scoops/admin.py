@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from scoops.models import IzzyFlavor, FavoriteFlavor
+from scoops.models import IzzyFlavor, FavoriteFlavor, FlavorReview
 
 
 class IzzyFlavorAdmin(admin.ModelAdmin):
@@ -11,7 +11,13 @@ class IzzyFlavorAdmin(admin.ModelAdmin):
 
 class FavoriteFlavorAdmin(admin.ModelAdmin):
     model = FavoriteFlavor
-    list_display = ('user', 'flavor')    
+    list_display = ('user', 'flavor')
+
+
+class FlavorReviewAdmin(admin.ModelAdmin):
+    model = FlavorReview
+    list_display = ('review_title', 'flavor_rating')
 
 admin.site.register(IzzyFlavor, IzzyFlavorAdmin)
 admin.site.register(FavoriteFlavor, FavoriteFlavorAdmin)
+admin.site.register(FlavorReview, FlavorReviewAdmin)
